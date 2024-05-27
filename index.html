@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        #side-container.toggle {
+            left: 0;
+            transition: all ease 600ms;
+        }
+
+        #side-container::-webkit-scrollbar {
+            width: 0;
+        }
+
+        #overlay.toggle {
+            display: block;
+        }
+
+        #invoice-view.toggle {
+            display: block;
+            transition: all ease 500ms;
+        }
+
+        #invoice-list {
+            transition: all ease 0.3s;
+        }
+
+        #invoice-list:hover {
+            border-color: rgb(126, 34, 206);
+        }
+
+        .svgicon {
+            opacity: 0;
+        }
+
+        #invoice-list:hover .svgicon {
+            opacity: 1;
+        }
+    </style>
+    <title>Invoice App</title>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center">
+
+    <div class="container w-[70vw]">
+        <header class=" flex flex-row items-center justify-around py-12">
+            <h1 class="text-black text-3xl font-bold">Invoices</h1>
+            <a id="new-btn" onclick="showSidebar()"
+                class="rounded-full flex flex-row gap-4 items-center cursor-pointer bg-purple-700 hover:opacity-[0.8] text-white px-6 py-3">
+                <img src="./assets/icons/plus-icon.png">
+                <p class="text-white text-lg font-bold">New invoice</p>
+            </a>
+        </header>
+        <hr class="my-5">
+        <div class="p-4 min-w-10" id="invoice-coll">
+
+        </div>
+    </div>
+    <!-- OVERLAY -->
+    <div id="overlay" onclick="hideSidebar();closeInvoice() "
+        class="bg-gray-800 bg-opacity-40 w-screen h-screen fixed inset-0 hidden">
+    </div>
+    <!-- SIDEBAR -->
+    <div id="side-container"
+        class=" container bg-white w-[50vw] h-[100vh] overflow-scroll border fixed top-0 left-[-690px]">
+        <div class="flex flex-row items-center justify-between">
+            <h1 class="text-black text-2xl font-bold mx-12 mt-12 mb-4">Create Invoice</h1>
+            <button onclick="hideSidebar()"
+                class=" text-gray-500 hover:text-gray-400 p-sm mx-12 mt-12 mb-4 flex flex-row items-center justify-center gap-2">
+              Go back  <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1l4 4-4 4" stroke="#7C5DFA" stroke-width="2" fill="none" fill-rule="evenodd" />
+                </svg> </button>
+        </div> <!-- <p class="text-purple-400 text-lg my-3 mx-2"></p> -->
+        <form id="myForm" name="myForm" method="get" onsubmit="return formValidate();"
+            class=" flex flex-col pt-4 px-12">
+            <hr class="my-3 mr-8">
+            <div class="grid grid-cols-2 my-2">
+
+                <div class="flex flex-col col-span-1 mr-8" id="name">
+                    <label class="my-1 text-gray-400 font-light required" for="name">Curstomer name</label>
+                    <input class="border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-purple-400"
+                        type="text" name="name" required>
+                    <span class="error text-red-500 text-[12px] ml-2 mt-1"></span>
+                </div>
+
+                <div class="flex flex-col col-span-1 mr-8" id="items">
+                    <label class="my-1 text-gray-400 font-light required" for="items">Select item</label>
+                    <select name="items" aria-required="true"
+                        class="border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-purple-400" required>
+                        <option value="0">Select an item</option>
+                        <option value="Bajra">Bajra</option>
+                        <option value="Dhania">Dhania</option>
+                        <option value="Besan">Besan</option>
+                        <option value="Makai">Makai</option>
+                        <option value="Lal Mirch">Lal Mirch</option>
+                        <option value="Haldi">Haldi</option>
+                        <option value="Gandam">Gandam</option>
+                        <option value="Daliya">Daliya</option>
+                        <option value="Rice">Rice</option>
+                        <option value="Cotton">Cotton</option>
+                    </select>
+                    <span id="error" class="error text-red-500 text-[12px] ml-2 mt-1"></span>
+                </div>
+
+
+            </div>
+            <div class="grid grid-cols-3 my-2">
+
+
+                <div class="flex flex-col col-span-1 mr-8" id="weight">
+                    <label class="my-1 text-gray-400 font-light required" for="weight">Item weight</label>
+                    <input class="border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-purple-400"
+                        type="number" name="weight" required>
+                    <span id="error" class="error text-red-500 text-[12px]   ml-2 mt-1"></span>
+                </div>
+
+
+
+                <div class="flex flex-col col-span-1 mr-8">
+                    <label class="my-1 text-gray-400 font-light  " for="cutting">Cutt off weight</label>
+                    <input class="border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-purple-400"
+                        type="text" name="cutting" id="cutting" value="0">
+                </div>
+
+
+
+                <div class="flex flex-col col-span-1 mr-8">
+                    <label class="my-1  text-gray-400 font-light" for="remaining">Remaining weight</label>
+                    <input
+                        class="bg-gray-100 border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        type="text" name="remaining" id="remaining" readonly>
+                </div>
+
+
+
+            </div>
+            <hr class="my-3 mr-8">
+
+
+
+            <div class="grid grid-cols-2 my-2">
+                <div class="flex flex-col col-span-1 mr-8">
+                    <label class="my-1 text-gray-400 font-light" for="cleaning-price">Product cleaning price</label>
+                    <input
+                        class="bg-gray-100 border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        type="number" name="cleaning-price" id="cleaning-price" readonly>
+                </div>
+                <div class="flex flex-col col-span-1 mr-8">
+                    <label class="my-1 text-gray-500 font-light" for="granding-price">Product granding price</label>
+                    <input
+                        class="bg-gray-100 border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        type="number" name="granding-price" id="granding-price" readonly>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="grid grid-cols-2 my-2">
+                <div class="flex flex-col col-span-1 mr-8">
+                    <label class="my-1 text-gray-400 font-light " for="extra">Extra charges</label>
+                    <input class="border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-purple-400"
+                        type="number" name="extra" id="extra" value="0">
+                </div>
+                <div class="flex flex-col col-span-1 mr-8">
+                    <label class="my-1 text-gray-500 font-light " for="discount">Discount</label>
+                    <input class="border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-purple-400"
+                        type="number" name="discount" id="discount" value="0">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 my-2">
+                <div class="flex flex-col col-span-1 mr-8">
+                    <label class="my-1 text-gray-400 font-light" for="product-price">Product price</label>
+                    <input
+                        class="bg-gray-100 border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        type="text" name="product-price" id="product-price" readonly>
+                </div>
+                <div class="flex flex-col col-span-1 mr-6">
+                    <label class="my-1 text-gray-400 font-light" for="total">Total price</label>
+                    <input
+                        class="bg-gray-100 border-[.2px] border-gray-300 py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        type="text" name="total" id="total" readonly>
+                </div>
+            </div>
+
+
+            <div class="flex flex-col col-span-3 mr-8 my-6">
+                <input id="create-btn"
+                    class="rounded-lg cursor-pointer bg-purple-700 hover:opacity-[0.8] text-white px-6 py-3"
+                    type="submit" value="+ Create invoice">
+            </div>
+        </form>
+    </div>
+    <!-- SIDEBAR ... END-->
+
+    <!-- INVOICE RECIEPT -->
+    <div id="invoice-view" class="container bg-white w-[50vw] rounded-lg p-3 fixed top-4 hidden">
+        <header class="flex flex-row justify-between items-center bg-white py-6 px-4 my-3 rounded-lg">
+            <button onclick="closeInvoice()"
+                class=" text-gray-500 hover:text-gray-400 p-sm flex flex-row items-center justify-center gap-2">
+                <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.342.886L2.114 5.114l4.228 4.228" stroke="#9277FF" stroke-width="2" fill="none"
+                        fill-rule="evenodd" />
+                </svg> Go back</button>
+            <div class="flex flex-row gap-4"> <button onclick="downloadInvoice() "
+                    class=" text-white px-4 py-2 bg-purple-700 hover:opacity-[0.8] rounded-lg">Download</button>
+                <button
+                    class="border border-purple-700 rounded-lg px-4 py-2 text-purple-600 hover:text-purple-700 bg-white hover:bg-gray-50"
+                    onclick="document.getElementById('invoice-list').remove();closeInvoice()">Delete</button>
+            </div>
+        </header>
+        <main id="invoice-img" class="bg-white p-4 rounded-lg">
+            <div class="flex flex-col">
+                <p class="text-black text-lg"><b class="text-blue-300">#</b>263527</p>
+                <p class="text-gray-400 text-sm">Abdul Rehman</p>
+            </div>
+            <div class="flex flex-col py-6">
+                <p class="text-gray-400 font-thin">Invoice Date</p>
+                <p class="text-black font-bold text-base">02-03-2019</p>
+            </div>
+            <div class="flex flex-col py-4">
+                <p class="text-gray-400 font-thin">Payment method</p>
+                <p class="text-black font-bold text-base">Cash on dilivery</p>
+            </div>
+            <div class="flex flex-row items-center justify-evenly bg-gray-100 rounded-t-xl mx-8 mt-6 p-2">
+                <div class="flex flex-col p-2">
+                    <p class="text-gray-400">Item name</p>
+                    <p class="text-black font-bold">Rice</p>
+                </div>
+                <div class="flex flex-col p-2">
+                    <p class="text-gray-400">Qty.</p>
+                    <p class="text-black font-bold">1 Kg</p>
+                </div>
+                <div class="flex flex-col p-2">
+                    <p class="text-gray-400">Item price</p>
+                    <p class="text-black font-bold">Rs.250/</p>
+                </div>
+                <div class="flex flex-col p-2">
+                    <p class="text-gray-400">Total</p>
+                    <p class="text-black font-bold">Rs.250/</p>
+                </div>
+            </div>
+
+
+            <div class="flex flex-row items-center justify-between bg-gray-700 p-6 rounded-lg">
+                <h1 class="text-white text-lg font-bold">Amount Due</h1>
+                <p class="text-white text-lg font-bold">Rs.2500/</p>
+            </div>
+        </main>
+    </div>
+    <!-- INVOICE RECIEPT ... END -->
+
+    <script>
+        let invoiceImg = document.getElementById('invoice-img');
+        function downloadInvoice() {
+            html2canvas(invoiceImg, {
+                canvas: document.createElement('canvas'),
+                width: invoiceImg.offsetWidth,
+                height: invoiceImg.offsetHeight,
+            }).then(canvas => {
+                let link = document.createElement('a');
+                link.href = canvas.toDataURL('image/jpg');
+                link.download = 'invoice.jpg';
+                link.click();
+            })
+        };
+
+
+    </script>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdnjs/cloudflare.com/ajax/libs/html2canvas.min.js"></script>
+</body>
+
+</html>
