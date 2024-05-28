@@ -17,15 +17,15 @@ function hideSidebar() {
 //Generate invoice function
 function generateInvoice() {
   let listCounter = String(Math.floor(Math.random() * 1000000)).padStart(6, 0);
-  invoices.innerHTML += `  <div onclick="openInvoice()" id="invoice-list" class="flex flex-row items-center justify-between border border-gray-200 hover:border-purple-500 cursor-pointer rounded-lg my-4 py-6 px-4 bg-white gap-7">
-      <div class="flex flex-row gap-12"><p class="text-black"><b class="text-blue-300">#</b>${listCounter}</p>
-        <p class="text-gray-400">Date</p>
-        <p class="text-gray-400">Name</p></div> 
-   <div class="flex flex-row gap-12 items-center justify-center">
-        <p class="text-gray-400">Item</p>
-        <p class="text-gray-400">Price</p>
+  invoices.innerHTML += `  <div onclick="openInvoice()" id="invoice-list" class="flex flex-row items-center justify-between border border-gray-200 hover:border-purple-500 cursor-pointer rounded-lg my-4 py-6 px-4  bg-white gap-7">
+      <div class="flex flex-col lg:flex-row gap-3 lg:gap-12 items-center justify-center"><p class="text-black text-sm lg:text-base mb-2"><b class="text-blue-300">#</b>${listCounter}</p>
+        <p class="text-gray-400 text-sm lg:text-sm">Date</p>
+        <p class="text-gray-400 text-sm lg:text-sm">Name</p></div> 
+   <div class="flex flex-col lg:flex-row gap-3 lg:gap-12 items-center justify-center">
+        <p class="text-gray-400 text-sm lg:text-sm">Item</p>
+        <p class="text-gray-400 text-sm lg:text-sm">Price</p>
         <svg class="svgicon" width="7" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#7C5DFA" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
-    </div>
+        </div>
     </div>
 `;
 document.myForm.reset();
