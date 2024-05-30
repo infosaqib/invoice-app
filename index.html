@@ -66,13 +66,13 @@
 
 <body class="bg-gray-100 flex items-center justify-center">
 
-    <div class="container w-[70vw]">
+    <div class="container w-[90vw] md:w-[70vw]">
         <header class=" flex flex-row items-center justify-around py-12 gap-8">
-            <h1 class="text-black text-xl lg:text-3xl font-bold">Invoices</h1>
+            <h1 class="text-black text-xl md:text-3xl font-bold">Invoices</h1>
             <a id="new-btn" onclick="showSidebar()"
-                class="rounded-full flex flex-row gap-4 items-center cursor-pointer bg-purple-700 hover:opacity-[0.8] text-white py-2 px-3 lg:px-6 lg:py-3">
-                <img class="w-6 lg:24" src="./assets/icons/plus-icon.png">
-                <p class="text-white text-sm lg:text-lg font-bold">New invoice</p>
+                class="rounded-full flex flex-row gap-4 items-center cursor-pointer bg-purple-700 hover:opacity-[0.8] text-white py-2 px-4 md:px-6 md:py-3">
+                <img class="w-6 md:w-9" src="./assets/icons/plus-icon.png">
+                <p class="text-white text-sm md:text-lg font-bold">New invoice</p>
             </a>
         </header>
         <hr class="my-5">
@@ -86,12 +86,12 @@
     </div>
     <!-- SIDEBAR -->
     <div id="side-container"
-        class=" container bg-white w-[90vw] lg:w-[50vw] h-[100vh] overflow-scroll border fixed top-0 left-[-690px]">
+        class=" container bg-white w-[90vw] md:w-[50vw] h-screen overflow-scroll border fixed top-0 left-[-690px]">
         <div class="flex flex-row items-center justify-between">
-            <h1 class="text-black text-lg lg:text-2xl font-bold mx-6 lg:mx-12 mt-6 lg:mt-12 mb-2 lg:mb-4">Create Invoice
+            <h1 class="text-black text-base md:text-2xl font-bold mx-4 md:mx-12 mt-6 md:mt-12 mb-2 md:mb-4">Create Invoice
             </h1>
             <button onclick="hideSidebar()"
-                class=" text-gray-500 hover:text-gray-400 p-sm mx-6 lg:mx-12 mt-6 lg:mt-12 mb-2 lg:mb-4 flex flex-row items-center justify-center gap-2">
+                class=" text-gray-500 hover:text-gray-400 text-sm md:text-xl p-sm mx-4 md:mx-12 mt-6 md:mt-12 mb-2 md:mb-4 flex flex-row items-center justify-center gap-2">
                 Go back <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1l4 4-4 4" stroke="#7C5DFA" stroke-width="2" fill="none" fill-rule="evenodd" />
                 </svg> </button>
@@ -99,11 +99,11 @@
         <form id="myForm" name="myForm" method="get" onsubmit="return formValidate();"
             class=" flex flex-col pt-4 px-12">
             <hr class="my-3 mr-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 my-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 my-2">
 
                 <div class="flex flex-col col-span-1 mr-8" id="name">
                     <label class="my-1 text-gray-400 font-light required" for="name">Curstomer name</label>
-                    <input class="border-[.2px] border-gray-300 py-1 lg:py-2 px-4 rounded-lg focus:outline-purple-400"
+                    <input class="border-[.2px] border-gray-300 py-1 md:py-2 px-4 rounded-lg focus:outline-purple-400"
                         type="text" name="name" required>
                     <span class="error text-red-500 text-[12px] ml-2 mt-1"></span>
                 </div>
@@ -129,12 +129,12 @@
 
 
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 my-2">
+            <div class="grid grid-cols-1 md:grid-cols-3 my-2">
 
 
                 <div class="flex flex-col col-span-1 mr-8" id="weight">
                     <label class="my-1 text-gray-400 font-light required" for="weight">Item weight</label>
-                    <input class="border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-purple-400"
+                    <input class="border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-purple-400"
                         type="number" name="weight" required>
                     <span id="error" class="error text-red-500 text-[12px]   ml-2 mt-1"></span>
                 </div>
@@ -143,8 +143,8 @@
 
                 <div class="flex flex-col col-span-1 mr-8">
                     <label class="my-1 text-gray-400 font-light  " for="cutting">Cutt off weight</label>
-                    <input class="border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-purple-400"
-                        type="text" name="cutting" id="cutting" value="0">
+                    <input class="border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-purple-400"
+                        type="number" name="cutting" id="cutting" value="0">
                 </div>
 
 
@@ -152,7 +152,7 @@
                 <div class="flex flex-col col-span-1 mr-8">
                     <label class="my-1  text-gray-400 font-light" for="remaining">Remaining weight</label>
                     <input
-                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
                         type="text" name="remaining" id="remaining" readonly>
                 </div>
 
@@ -163,17 +163,17 @@
 
 
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 my-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 my-2">
                 <div class="flex flex-col col-span-1 mr-8">
                     <label class="my-1 text-gray-400 font-light" for="cleaning-price">Product cleaning price</label>
                     <input
-                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
                         type="number" name="cleaning-price" id="cleaning-price" readonly>
                 </div>
                 <div class="flex flex-col col-span-1 mr-8">
                     <label class="my-1 text-gray-500 font-light" for="granding-price">Product granding price</label>
                     <input
-                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
                         type="number" name="granding-price" id="granding-price" readonly>
                 </div>
             </div>
@@ -183,30 +183,30 @@
 
 
 
-            <div class="grid grid-col-1 lg:grid-cols-2 my-2">
+            <div class="md:grid   md:grid-cols-2 my-4">
                 <div class="flex flex-col col-span-1 mr-8">
                     <label class="my-1 text-gray-400 font-light " for="extra">Extra charges</label>
-                    <input class="border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-purple-400"
+                    <input class="border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-purple-400"
                         type="number" name="extra" id="extra" value="0">
                 </div>
                 <div class="flex flex-col col-span-1 mr-8">
                     <label class="my-1 text-gray-500 font-light " for="discount">Discount</label>
-                    <input class="border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-purple-400"
+                    <input class="border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-purple-400"
                         type="number" name="discount" id="discount" value="0">
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 my-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 my-2">
                 <div class="flex flex-col col-span-1 mr-8">
                     <label class="my-1 text-gray-400 font-light" for="product-price">Product price</label>
                     <input
-                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
                         type="text" name="product-price" id="product-price" readonly>
                 </div>
                 <div class="flex flex-col col-span-1 mr-6">
                     <label class="my-1 text-gray-400 font-light" for="total">Total price</label>
                     <input
-                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 lg:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
+                        class="bg-gray-100 border-[.2px] border-gray-300  py-1 md:py-2 px-4 rounded-lg focus:outline-gray-300 focus:bg-gray-100"
                         type="text" name="total" id="total" readonly>
                 </div>
             </div>
@@ -214,7 +214,7 @@
 
             <div class="flex flex-col col-span-3 mr-8 my-6">
                 <input id="create-btn"
-                    class="rounded-lg cursor-pointer bg-purple-700 hover:opacity-[0.8] text-white px-6 py-3"
+                    class="rounded-lg cursor-pointer bg-purple-700 hover:opacity-[0.8] text-white px-6 py-2 md:py-3"
                     type="submit" value="+ Create invoice">
             </div>
         </form>
@@ -223,62 +223,66 @@
 
     <!-- INVOICE RECIEPT -->
     <div id="invoice-view"
-        class="container bg-white w-[90vw] lg:w-[50vw] rounded-lg p-3 absolute top-8 lg:top-4 hidden">
+        class="container bg-white w-[90vw] md:w-[50vw] rounded-lg p-3 absolute top-5 md:top-7  hidden">
         <header
-            class="flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between items-center bg-white py-6 px-4 my-3 rounded-lg">
+            class="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-start md:items-center bg-white py-3 md:py-6 px-4 my-3 rounded-lg">
             <button onclick="closeInvoice()"
-                class=" text-gray-500 hover:text-gray-400 p-sm flex flex-row items-center justify-center gap-2">
+                class=" text-gray-500 hover:text-gray-400 text-sm md:text-lg p-sm flex flex-row items-center justify-center gap-2">
                 <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.342.886L2.114 5.114l4.228 4.228" stroke="#9277FF" stroke-width="2" fill="none"
                         fill-rule="evenodd" />
                 </svg> Go back</button>
             <div class="flex flex-row gap-4"> <button onclick="return saveImg() "
-                    class=" text-white px-3 lg:px-4  py-1 lg:py-2 bg-purple-700 hover:opacity-[0.8] rounded-lg">Download</button>
+                    class=" text-white text-sm md:text-lg px-3 md:px-4  py-1 md:py-2 bg-purple-700 hover:opacity-[0.8] rounded-lg">Download</button>
                 <button
-                    class="border border-purple-700 rounded-lg px-3 lg:px-4  py-1 lg:py-2 text-purple-600 hover:text-purple-700 bg-white hover:bg-gray-50"
+                    class="border border-purple-700 rounded-lg px-3 md:px-4  py-1 md:py-2 text-sm md:text-lg text-purple-600 hover:text-purple-700 bg-white hover:bg-gray-50"
                     onclick="document.getElementById('invoice-list').remove();closeInvoice()">Delete</button>
             </div>
         </header>
-        <main id="invoice-img " class="bg-white p-4 rounded-lg">
-            <div class="flex flex-row lg:flex-col justify-between">
-            <div class="flex flex-col gap-4 lg:block">
+        <main id="invoice-img " class="bg-white p-2 md:p-4 rounded-lg">
+            <div class="flex flex-row  justify-between">
+            <div class="flex flex-col gap-1 md:block">
                 <div class="flex flex-col">
-                    <p class="text-black text-lg"><b class="text-blue-300">#</b>263527</p>
-                    <p class="text-gray-400 text-sm">Abdul Rehman</p>
+                    <p class="text-black text-xs md:text-lg"><b class="text-blue-300">#</b>263527</p>
+                    <p class="text-gray-400 text-xs md:text-base">Abdul Rehman</p>
                 </div>
-                <div class="flex flex-col py-6">
-                    <p class="text-gray-400 font-thin">Invoice Date</p>
-                    <p class="text-black font-bold text-base">02-03-2019</p>
+                <div class="flex flex-col py-3">
+                    <p class="text-gray-400 text-xs md:text-lg  font-thin">Invoice Date</p>
+                    <p class="text-black font-bold text-xs md:text-base">02-03-2019</p>
                 </div>
-                <div class="flex flex-col py-4">
-                    <p class="text-gray-400 font-thin">Payment method</p>
-                    <p class="text-black font-bold text-base">Cash on dilivery</p>
+                <div class="flex flex-col py-3">
+                    <p class="text-gray-400 text-xs md:text-lg font-thin">Payment method</p>
+                    <p class="text-black font-bold text-xs md:text-base">Cash on dilivery</p>
+                </div>
+                <div class="flex flex-col py-3">
+                    <p class="text-gray-400 text-xs md:text-lg font-thin">Payment action</p>
+                    <p class="text-black font-bold text-xs md:text-base">pending</p>
                 </div>
             </div>
             <div
-                class="flex flex-col lg:flex-row items-start lg:items-center justify-evenly bg-gray-100 rounded-lg lg:rounded-t-xl lg:mx-8 lg:mt-6 p-2">
+                class="flex flex-col   items-start   justify-evenly bg-gray-100 rounded-lg md:rounded-t-xl md:mx-8 mt-0 md:mt-6 p-2">
                 <div class="flex flex-col p-2">
-                    <p class="text-gray-400">Item name</p>
-                    <p class="text-black font-bold">Rice</p>
+                    <p class="text-gray-400 text-xs md:text-base">Item name</p>
+                    <p class="text-black font-bold text-xs md:text-base">Rice</p>
                 </div>
                 <div class="flex flex-col p-2">
-                    <p class="text-gray-400">Qty.</p>
-                    <p class="text-black font-bold">1 Kg</p>
+                    <p class="text-gray-400 text-xs md:text-base">Qty.</p>
+                    <p class="text-black font-bold text-xs md:text-base">1 Kg</p>
                 </div>
                 <div class="flex flex-col p-2">
-                    <p class="text-gray-400">Item price</p>
-                    <p class="text-black font-bold">Rs.250/</p>
+                    <p class="text-gray-400 text-xs md:text-base">Item price</p>
+                    <p class="text-black font-bold text-xs md:text-base">Rs.250/</p>
                 </div>
                 <div class="flex flex-col p-2">
-                    <p class="text-gray-400">Total</p>
-                    <p class="text-black font-bold">Rs.250/</p>
+                    <p class="text-gray-400 text-xs md:text-base">Total</p>
+                    <p class="text-black font-bold text-xs md:text-base">Rs.250</p>
                 </div>
             </div>
 
         </div>
-            <div class="flex flex-row items-center justify-between bg-gray-700 p-6 rounded-lg mt-6 lg:mt-0">
-                <h1 class="text-white text-base lg:text-lg font-bold">Amount Due</h1>
-                <p class="text-white text-base lg:text-lg font-bold">Rs.2500</p>
+            <div class="flex flex-row items-center justify-between bg-gray-700 p-3 md:p-6 rounded-lg mt-4  ">
+                <h1 class="text-white text-sm md:text-lg font-bold">Amount Due</h1>
+                <p class="text-white text-sm md:text-lg font-bold">Rs.2500</p>
             </div>
         </main>
     </div>
@@ -302,6 +306,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
         integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
 </body>
 
 </html>
